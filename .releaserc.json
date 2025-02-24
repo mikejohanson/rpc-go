@@ -4,7 +4,17 @@
     "next"
   ],
   "plugins": [
-    "@semantic-release/commit-analyzer",
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "releaseRules": [
+          {
+            "type": "chore",
+            "release": "patch"
+          }
+        ]
+      }
+    ],
     "@semantic-release/release-notes-generator",
     "@semantic-release/changelog",
     [
@@ -30,16 +40,19 @@
           {
             "path": "rpc_so_x64.tar.gz",
             "label": "Linux x64 RPC Library"
+          },
+          {
+            "path": "licenses.zip",
+            "label": "Third-party Licenses"
           }
         ]
       }
     ],
-    "@semantic-release/github",
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "./build.sh ${nextRelease.version}",
-        "publishCmd": "docker push vprodemo.azurecr.io/rpc-go:v${nextRelease.version}",
+        "prepareCmd": "./build.sh ${nextRelease.version} && docker build -t vprodemo.azurecr.io/rpc-go:v${nextRelease.version} -t vprodemo.azurecr.io/rpc-go:latest -t docker.io/intel/oact-rpc-go:v${nextRelease.version} -t docker.io/intel/oact-rpc-go:latest .",
+        "publishCmd": "docker push vprodemo.azurecr.io/rpc-go:v${nextRelease.version} && docker push vprodemo.azurecr.io/rpc-go:latest && docker push docker.io/intel/oact-rpc-go:v${nextRelease.version} && docker push docker.io/intel/oact-rpc-go:latest",
         "verifyReleaseCmd": "echo v${nextRelease.version} > .nextVersion"
       }
     ],

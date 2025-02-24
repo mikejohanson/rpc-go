@@ -1,3 +1,89 @@
+# [2.43.0](https://github.com/open-amt-cloud-toolkit/rpc-go/compare/v2.42.8...v2.43.0) (2025-02-10)
+
+
+### Features
+
+* ccm on tls only platforms ([#745](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/745)) ([80853ee](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/80853ee033e4370590e929ba2b6bd80cf092c6f0))
+
+## [2.42.8](https://github.com/open-amt-cloud-toolkit/rpc-go/compare/v2.42.7...v2.42.8) (2025-01-15)
+
+
+### Bug Fixes
+
+* test ci ([8c5b3dd](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/8c5b3ddec5b3c8678fba93475675081aee99d8bb))
+* test ci ([db52045](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/db52045bc8c7de7f9c7496d88edeca5ec4491ee0))
+
+## [2.42.7](https://github.com/open-amt-cloud-toolkit/rpc-go/compare/v2.42.6...v2.42.7) (2025-01-15)
+
+
+### Bug Fixes
+
+* Use OS DNS suffix when DNS suffix set in MEBx is empty-like ([e89fd98](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/e89fd984915f998d5dd824bea04d84999b27a847))
+
+## [2.42.6](https://github.com/open-amt-cloud-toolkit/rpc-go/compare/v2.42.5...v2.42.6) (2024-12-16)
+
+
+### Bug Fixes
+
+* opstate on amt 11 and below ([954f3d3](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/954f3d36bdd2fa076293536758772c492034aeba))
+
+## [2.42.5](https://github.com/open-amt-cloud-toolkit/rpc-go/compare/v2.42.4...v2.42.5) (2024-11-15)
+
+## [2.42.4](https://github.com/open-amt-cloud-toolkit/rpc-go/compare/v2.42.3...v2.42.4) (2024-11-15)
+
+## [2.42.3](https://github.com/open-amt-cloud-toolkit/rpc-go/compare/v2.42.2...v2.42.3) (2024-11-15)
+
+## [2.42.2](https://github.com/open-amt-cloud-toolkit/rpc-go/compare/v2.42.1...v2.42.2) (2024-11-14)
+
+
+### Bug Fixes
+
+* activates in ccm mode now ([a50f3a0](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/a50f3a0a4aef76bec2dbe949daabf16c02a7cbb8))
+
+## [2.42.1](https://github.com/open-amt-cloud-toolkit/rpc-go/compare/v2.42.0...v2.42.1) (2024-11-14)
+
+# [2.42.0](https://github.com/open-amt-cloud-toolkit/rpc-go/compare/v2.41.0...v2.42.0) (2024-11-06)
+
+
+### Features
+
+* IsWirelessSynchronized is optional in wireless configuration ([0847817](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/0847817d4bdb53751429a957d3b619a665a4fe01))
+
+# [2.41.0](https://github.com/open-amt-cloud-toolkit/rpc-go/compare/v2.40.1...v2.41.0) (2024-11-05).
+
+
+### Features
+
+* enable config v2 from console ([a765f4c](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/a765f4c2c279f6fcb511d48cbca8be02e2762758))
+
+## [2.40.1](https://github.com/open-amt-cloud-toolkit/rpc-go/compare/v2.40.0...v2.40.1) (2024-10-31)
+
+
+### Bug Fixes
+
+* add error handling when TLS activation is enforced ([#678](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/678)) ([f538952](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/f538952de54239ba092e281a40e7dbbdb5c3029f))
+
+# [2.40.0](https://github.com/open-amt-cloud-toolkit/rpc-go/compare/v2.39.0...v2.40.0) (2024-10-15).
+
+
+### Features
+
+* generate third party licenses zip for every release ([#665](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/665)) ([10d7724](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/10d772492318060b70834974aa3df1476946fff6))
+
+# [2.39.0](https://github.com/open-amt-cloud-toolkit/rpc-go/compare/v2.38.0...v2.39.0) (2024-09-17)
+
+
+### Features
+
+* lib.go redirects stdout to Output ([#640](https://github.com/open-amt-cloud-toolkit/rpc-go/issues/640)) ([8697c99](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/8697c995f28e27631d26be291d711abdec1ad86d))
+
+# [2.38.0](https://github.com/open-amt-cloud-toolkit/rpc-go/compare/v2.37.0...v2.38.0) (2024-09-05)
+
+
+### Features
+
+* adds ccm activation using config ([abd02bc](https://github.com/open-amt-cloud-toolkit/rpc-go/commit/abd02bcbb05b88e44378c81962f8b89bf115327a))
+
 # [2.37.0](https://github.com/open-amt-cloud-toolkit/rpc-go/compare/v2.36.2...v2.37.0) (2024-08-07)
 
 

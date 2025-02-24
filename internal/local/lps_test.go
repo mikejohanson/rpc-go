@@ -6,6 +6,7 @@
 package local
 
 import (
+	cryptotls "crypto/tls"
 	"encoding/xml"
 	"errors"
 	"net/http"
@@ -276,7 +277,11 @@ func (m MockWSMAN) SetupMEBX(password string) (setupandconfiguration.Response, e
 	}, mockSetupAndConfigurationErr
 }
 
-func (m MockWSMAN) SetupWsmanClient(username string, password string, logAMTMessages bool) {}
+var mockSetupWsmanClientErr error = nil
+
+func (m MockWSMAN) SetupWsmanClient(username string, password string, useTLS bool, logAMTMessages bool, tlsConfig *cryptotls.Config) error {
+	return mockSetupWsmanClientErr
+}
 
 var mockGeneralSettings = general.Response{}
 var errMockGeneralSettings error = nil
@@ -607,7 +612,7 @@ func (m MockWSMAN) AddPrivateKey(privateKey string) (string, error) {
 
 var errEnableWiFi error = nil
 
-func (m MockWSMAN) EnableWiFi() error {
+func (m MockWSMAN) EnableWiFi(enableSync bool) error {
 	return errEnableWiFi
 }
 
@@ -641,6 +646,8 @@ type MockAMT struct{}
 const ChangeEnabledResponseNewEnabled = 0x82
 const ChangeEnabledResponseNewDisabled = 0x80
 const ChangeEnabledResponseNotNew = 0x00
+const ChangeEnabledResponseNewTLSEnforcedEnabled = 0xC2
+const ChangeEnabledResponseNewTLSEnforcedDisabled = 0xC0
 
 var mockChangeEnabledResponse = amt2.ChangeEnabledResponse(ChangeEnabledResponseNewEnabled)
 var errMockChangeEnabled error = nil
@@ -769,6 +776,6 @@ func TestExecute(t *testing.T) {
 		f.Command = utils.CommandConfigure
 		mockControlMode = 1
 		rc := ExecuteCommand(f)
-		assert.Equal(t, utils.AMTConnectionFailed, rc)
+		assert.Equal(t, utils.UnableToConfigure, rc)
 	})
 }

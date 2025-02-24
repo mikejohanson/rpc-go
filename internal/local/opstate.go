@@ -23,16 +23,20 @@ func (service *ProvisioningService) EnableAMT() error {
 }
 
 func (service *ProvisioningService) CheckAndEnableAMT(skipIPRenewal bool) error {
-	rsp, err := service.amtCommand.GetChangeEnabled()
+	resp, err := service.amtCommand.GetChangeEnabled()
 	if err != nil {
+		if err.Error() == "wait timeout while sending data" {
+			log.Debug("Operation timed out while sending data. This may occur on systems with AMT version 11 and below.")
+			return nil
+		}
 		log.Error(err)
 		return utils.AMTConnectionFailed
 	}
-	if !rsp.IsNewInterfaceVersion() {
+	if !resp.IsNewInterfaceVersion() {
 		log.Debug("this AMT version does not support SetAmtOperationalState")
 		return nil
 	}
-	if rsp.IsAMTEnabled() {
+	if resp.IsAMTEnabled() {
 		log.Debug("AMT is already enabled")
 		return nil
 	}

@@ -3,17 +3,27 @@
 # * SPDX-License-Identifier: Apache-2.0
 # **********************************************************************
 
-FROM golang:1.22-alpine@sha256:1a478681b671001b7f029f94b5016aed984a23ad99c707f6a0ab6563860ae2f3 as builder
-RUN apk update
-RUN apk upgrade
-RUN apk add --no-cache git
+FROM golang:1.24-alpine@sha256:5429efb7de864db15bd99b91b67608d52f97945837c7f6f7d1b779f9bfe46281 as builder
+
+RUN apk update && apk upgrade && apk add --no-cache git
+
 WORKDIR /rpc
 COPY . .
-RUN CGO_ENABLED=0 LDFLAGS="-s -w" GOOS=linux GOARCH=amd64 go build -o /build/rpc ./cmd/main.go
 
+# Install go-licenses
+RUN go install github.com/google/go-licenses@latest
+# Generate license files
+RUN go-licenses save ./... --save_path=licenses
+
+# Build rpc
+RUN CGO_ENABLED=0 LDFLAGS="-s -w" GOOS=linux GOARCH=amd64 go build -o /build/rpc ./cmd/main.go
 
 FROM scratch
 LABEL license='SPDX-License-Identifier: Apache-2.0' \
       copyright='Copyright (c) Intel Corporation 2021'
+
 COPY --from=builder /build/rpc /rpc
+#go-licenses will install when ./build.sh is executed
+COPY --from=builder /rpc/licenses /licenses
+
 ENTRYPOINT ["/rpc"]
